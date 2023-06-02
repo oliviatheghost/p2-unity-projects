@@ -17,13 +17,13 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 lookDirection = (player.transform.position - transform.position).normalized; 
+        Vector3 lookDirection = (player.transform.position - transform.position).normalized; // makes enemy follow player
 
-        enemyRb.AddForce(lookDirection * speed);
+        enemyRb.AddForce(lookDirection * speed); // enemy's speed
 
-        if (transform.position.y < -10) 
+        if (transform.position.y < -10) // destroy enemy after position reaches below (0, -10) 
         {
-           Destroy(gameObject); 
+           Destroy(gameObject); // after enemy is hit off of the island & reaches -10 = y, it will destory
         }
     }
 }

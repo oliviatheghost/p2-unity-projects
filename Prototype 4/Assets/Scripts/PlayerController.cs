@@ -30,16 +30,16 @@ public class PlayerController : MonoBehaviour
     // OnTriggerEnter is called on the first frame that we collide with trigger
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Powerup"))
+        if(other.CompareTag("Powerup"))//give player power up
         {
             hasPowerup = true; 
             powerupIndicator.gameObject.SetActive(true);             
-            Destroy(other.gameObject);
+            Destroy(other.gameObject); // destroys power up object & gives power up buff
             StartCoroutine(PowerupCountdownRoutine());
         }
     }
 
-        IEnumerator PowerupCountdownRoutine()
+        IEnumerator PowerupCountdownRoutine() // set timer for power up buff to last: 7 seconds total
         {
             yield return new WaitForSeconds(7);
             hasPowerup = false;

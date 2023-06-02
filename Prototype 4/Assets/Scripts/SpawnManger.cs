@@ -12,8 +12,8 @@ public class SpawnManger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       SpawnEnemyWave(waveNumber);
-       Instantiate(powerupPrefab, GenerareSpawnPosition(), powerupPrefab.transform.rotation);
+       SpawnEnemyWave(waveNumber);// number of enemy spaw waves
+       Instantiate(powerupPrefab, GenerareSpawnPosition(), powerupPrefab.transform.rotation);//power up swpans in random position
 
     }
 
@@ -26,8 +26,8 @@ public class SpawnManger : MonoBehaviour
 
         {
             waveNumber++; 
-            SpawnEnemyWave(waveNumber);
-            Instantiate(powerupPrefab, GenerareSpawnPosition(), powerupPrefab.transform.rotation);
+            SpawnEnemyWave(waveNumber);// add 1 enemy each wave
+            Instantiate(powerupPrefab, GenerareSpawnPosition(), powerupPrefab.transform.rotation);//enemy spawns in different positions
         }
     }
 
@@ -35,7 +35,7 @@ public class SpawnManger : MonoBehaviour
 
     // spawn a bunch of enemies each wave
     void SpawnEnemyWave(int enemiesToSpawn)
-    { for (int i = 0; i < enemiesToSpawn; i++)
+    { for (int i = 0; i < enemiesToSpawn; i++) // spawn a new enemy each wave
         {
         Instantiate(enemyPrefab, GenerareSpawnPosition(), enemyPrefab.transform.rotation);
         //Create new enemy gameObject
@@ -45,11 +45,11 @@ public class SpawnManger : MonoBehaviour
 
     private Vector3 GenerareSpawnPosition()
     {
-        float spawnPosX = Random.Range(-spawnRange, spawnRange);
-        float spawnPosZ = Random.Range(-spawnRange, spawnRange);
+        float spawnPosX = Random.Range(-spawnRange, spawnRange); //enemy spawns in random ranges in x range
+        float spawnPosZ = Random.Range(-spawnRange, spawnRange); // enemt spawns in random ranges in z range
 
         Vector3 randomPos = new Vector3(spawnPosX, 0, spawnPosZ);
 
-        return randomPos;
+        return randomPos; // resent in the same position as start
     }
 }
