@@ -6,11 +6,12 @@ public class SpawnManager : MonoBehaviour
 {
     public GameObject enemyPrefab;
     
-    private Vector3 spawnPos = new Vector3(25, 0, 0);
+    private Vector3 spawnPos = new Vector3(0, 0, 20);
     private float startDelay = 2;
-    private float repeatRate = 2;
-    private PlayerController playerControllerScript;
-
+    private float repeatRate = 3;
+    public float spawnRangeX = 8.0f;
+    public float spawnPosZ = 20f;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -21,8 +22,9 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void SpawnEnemy()
     {
-          if (!playerControllerScript.gameOver)
         {
+          Vector3 spawnPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), 0, spawnPosZ);
+
           Instantiate(enemyPrefab, spawnPos, enemyPrefab.transform.rotation);  
         }
     }
